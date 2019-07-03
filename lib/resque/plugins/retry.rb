@@ -457,10 +457,10 @@ module Resque
       end
 
       def retry_delay_max
-        if @retry_exceptions.is_a?(Hash)
+        if instance_variable_defined?(:@retry_exceptions) && @retry_exceptions.is_a?(Hash)
           @retry_exceptions.values.flatten.max
         else
-          0
+          @retry_delay ||= 0
         end
       end
 
