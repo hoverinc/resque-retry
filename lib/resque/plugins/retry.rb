@@ -460,7 +460,7 @@ module Resque
         if @retry_exceptions.is_a?(Hash)
           @retry_exceptions.values.flatten.max
         else
-          @retry_delay ||= 0
+          0
         end
       end
 
